@@ -61,6 +61,38 @@ export default function Hero() {
              </div>
            </div>
         </div>
+
+        {/* Features Marquee */}
+        <div className="w-full mt-24 overflow-hidden py-4 border-y border-white/10 bg-black/30 backdrop-blur-sm animate-fade-in rounded-2xl opacity-60 hover:opacity-100 transition-opacity" style={{ animationDelay: '0.8s' }}>
+          <div className="flex w-fit animate-[marquee_20s_linear_infinite] whitespace-nowrap items-center">
+            <span className="mx-4 text-gray-400 font-bold uppercase tracking-widest text-sm flex items-center">Experience Premium Amenities:</span>
+            <span className="mx-8 text-white font-black uppercase flex items-center gap-2">📶 FREE HIGH-SPEED WIFI</span>
+            <span className="mx-8 text-[#ff8c3a] font-black uppercase">•</span>
+            <span className="mx-8 text-white font-black uppercase flex items-center gap-2">🚗 VALET PARKING</span>
+            <span className="mx-8 text-[#ff8c3a] font-black uppercase">•</span>
+            <span className="mx-8 text-white font-black uppercase flex items-center gap-2">🕒 24/7 SERVICES</span>
+            <span className="mx-8 text-[#ff8c3a] font-black uppercase">•</span>
+            <span className="mx-8 text-white font-black uppercase flex items-center gap-2">📺 LIVE SPORTS TV</span>
+            <span className="mx-8 text-[#ff8c3a] font-black uppercase">•</span>
+            <span className="mx-8 text-white font-black uppercase flex items-center gap-2">🐶 PET FRIENDLY</span>
+            <span className="mx-8 text-[#ff8c3a] font-black uppercase">•</span>
+            <span className="mx-8 text-white font-black uppercase flex items-center gap-2">❄️ FULLY AIR CONDITIONED</span>
+            
+            {/* DUPLICATE TO LOOP */}
+            <span className="mx-8 text-[#ff8c3a] font-black uppercase">•</span>
+            <span className="mx-8 text-white font-black uppercase flex items-center gap-2">📶 FREE HIGH-SPEED WIFI</span>
+            <span className="mx-8 text-[#ff8c3a] font-black uppercase">•</span>
+            <span className="mx-8 text-white font-black uppercase flex items-center gap-2">🚗 VALET PARKING</span>
+            <span className="mx-8 text-[#ff8c3a] font-black uppercase">•</span>
+            <span className="mx-8 text-white font-black uppercase flex items-center gap-2">🕒 24/7 SERVICES</span>
+            <span className="mx-8 text-[#ff8c3a] font-black uppercase">•</span>
+            <span className="mx-8 text-white font-black uppercase flex items-center gap-2">📺 LIVE SPORTS TV</span>
+            <span className="mx-8 text-[#ff8c3a] font-black uppercase">•</span>
+            <span className="mx-8 text-white font-black uppercase flex items-center gap-2">🐶 PET FRIENDLY</span>
+            <span className="mx-8 text-[#ff8c3a] font-black uppercase">•</span>
+            <span className="mx-8 text-white font-black uppercase flex items-center gap-2">❄️ FULLY AIR CONDITIONED</span>
+          </div>
+        </div>
       </div>
     </section>
   );

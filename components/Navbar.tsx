@@ -55,14 +55,17 @@ export default function Navbar() {
           <Link href="/menu" className="text-gray-300 hover:text-white transition-colors font-medium">
             Full Menu
           </Link>
+          <Link href="/#reservation" className="text-gray-300 hover:text-white transition-colors font-medium flex items-center gap-1">
+            Reservations <span className="relative flex h-2 w-2 ml-1"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span>
+          </Link>
           <Link href="/gallery" className="text-gray-300 hover:text-white transition-colors font-medium">
             Gallery
           </Link>
           <Link href="/#offers" className="text-gray-300 hover:text-white transition-colors font-medium">
             Offers
           </Link>
-          <Link href="/#contact" className="text-gray-300 hover:text-white transition-colors font-medium">
-            Contact
+          <Link href="/admin" target="_blank" className="text-primary hover:text-primary-dark transition-colors font-bold flex items-center gap-1 bg-primary/10 px-3 py-1 rounded-lg">
+            Live Admin Dshbd
           </Link>
         </nav>
 
@@ -112,6 +115,14 @@ export default function Navbar() {
               Full Menu
             </Link>
             <Link
+              href="/#reservation"
+              className="text-white hover:text-primary transition-colors py-3 border-b border-white/5 w-full text-center flex justify-center items-center gap-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Reservations
+              <span className="bg-primary text-white text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider">New</span>
+            </Link>
+            <Link
               href="/gallery"
               className="text-white hover:text-primary transition-colors py-3 border-b border-white/5 w-full text-center"
               onClick={() => setMobileMenuOpen(false)}
@@ -126,11 +137,11 @@ export default function Navbar() {
               Special Offers
             </Link>
             <Link
-              href="/#contact"
-              className="text-white hover:text-primary transition-colors py-3 w-full text-center"
+              href="/admin"
+              className="text-primary hover:text-primary-dark font-bold transition-colors py-3 w-full text-center flex justify-center items-center gap-2"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Location & Contact
+              Client Admin Dashboard
             </Link>
           </nav>
         </div>

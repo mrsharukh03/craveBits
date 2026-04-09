@@ -6,6 +6,7 @@ import Reviews from "@/components/Reviews";
 import Gallery from "@/components/Gallery";
 import LocationContact from "@/components/LocationContact";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import Reservation from "@/components/Reservation";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Offers />
       <WhyChooseUs />
       <Menu />
+      <Reservation />
       <Gallery />
       <Reviews />
       <LocationContact />

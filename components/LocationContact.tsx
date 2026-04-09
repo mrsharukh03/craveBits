@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Wifi, Car, Wind, Zap } from "lucide-react";
 
 export default function LocationContact() {
   return (
@@ -56,6 +56,26 @@ export default function LocationContact() {
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
+            
+            {/* AMENITIES FLOATING BADGES */}
+            <div className="absolute bottom-6 left-6 right-6 flex flex-wrap gap-3 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+               <div className="bg-black/70 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-xl text-white font-medium flex items-center gap-2.5 shadow-xl hover:bg-white/10 transition-colors">
+                 <Wifi size={18} className="text-primary" /> 
+                 <span className="text-sm border-l border-white/20 pl-2.5">Free Premium WiFi</span>
+               </div>
+               <div className="bg-black/70 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-xl text-white font-medium flex items-center gap-2.5 shadow-xl hover:bg-white/10 transition-colors">
+                 <Car size={18} className="text-primary" /> 
+                 <span className="text-sm border-l border-white/20 pl-2.5">Valet Parking</span>
+               </div>
+               <div className="bg-black/70 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-xl text-white font-medium flex items-center gap-2.5 shadow-xl hover:bg-white/10 transition-colors">
+                 <Wind size={18} className="text-primary" /> 
+                 <span className="text-sm border-l border-white/20 pl-2.5">Fully Air Conditioned</span>
+               </div>
+               <div className="bg-black/70 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-xl text-white font-medium flex items-center gap-2.5 shadow-xl hover:bg-white/10 transition-colors">
+                 <Zap size={18} className="text-primary" /> 
+                 <span className="text-sm border-l border-white/20 pl-2.5">100% Power Backup</span>
+               </div>
+            </div>
           </div>
           
         </div>

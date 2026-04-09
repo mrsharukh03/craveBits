@@ -2,10 +2,107 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { LayoutDashboard, ShoppingBag, UtensilsCrossed, Users, Settings, LogOut, CheckCircle, Clock } from "lucide-react";
+import { LayoutDashboard, ShoppingBag, UtensilsCrossed, Users, Settings, LogOut, CheckCircle, Clock, Lock, User, ArrowRight, Loader2 } from "lucide-react";
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("orders");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoggingIn(true);
+    setTimeout(() => {
+      setIsLoggedIn(true);
+      setIsLoggingIn(false);
+    }, 1500); // Fake delay for realism
+  };
+
+  if (!isLoggedIn) {
+    return (
+      <div className="min-h-screen bg-dark-bg flex items-center justify-center relative overflow-hidden px-4">
+        {/* Decorative Background Elements */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
+        
+        <div className="w-full max-w-md bg-dark-card/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10 shadow-[0_0_50px_rgba(0,0,0,0.5)] relative z-10 animate-zoom-in">
+          <div className="text-center mb-10">
+            <h1 className="text-3xl font-black text-white tracking-tight mb-2">
+              Admin<span className="text-primary">Portal</span>
+            </h1>
+            <p className="text-gray-400 text-sm">Secure access to client management</p>
+          </div>
+
+          <form onSubmit={handleLogin} className="space-y-6">
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-300 ml-1">Email Address</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500">
+                  <User size={18} />
+                </div>
+                <input 
+                  type="email" 
+                  required 
+                  defaultValue="admin@cravebites.com"
+                  className="w-full bg-black/40 border border-white/10 rounded-xl py-3.5 pl-11 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  placeholder="admin@example.com"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-300 ml-1">Password</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500">
+                  <Lock size={18} />
+                </div>
+                <input 
+                  type="password" 
+                  required 
+                  defaultValue="admin123"
+                  className="w-full bg-black/40 border border-white/10 rounded-xl py-3.5 pl-11 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  placeholder="••••••••"
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between text-sm mt-2">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" className="rounded bg-black/40 border-white/10 text-primary focus:ring-primary h-4 w-4" defaultChecked />
+                <span className="text-gray-400">Remember me</span>
+              </label>
+              <a href="#" className="text-primary hover:text-primary-dark transition-colors font-medium">Forgot Password?</a>
+            </div>
+
+            <button 
+              type="submit" 
+              disabled={isLoggingIn}
+              className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl transition-all shadow-[0_4px_14px_0_rgba(249,115,22,0.39)] hover:shadow-[0_6px_20px_rgba(249,115,22,0.23)] active:scale-[0.98] flex items-center justify-center gap-2 mt-4 disabled:opacity-70 disabled:cursor-not-allowed group"
+            >
+              {isLoggingIn ? (
+                <>
+                  <Loader2 size={20} className="animate-spin" /> Authenticating...
+                </>
+              ) : (
+                <>
+                  Sign In <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </>
+              )}
+            </button>
+          </form>
+
+          <div className="mt-8 pt-6 border-t border-white/10 text-center">
+            <p className="text-gray-500 text-sm">
+              <span className="text-primary font-bold">Demo Note:</span> Use default credentials to enter the Client Admin Panel.
+            </p>
+            <Link href="/" className="inline-flex items-center justify-center mt-6 text-gray-400 hover:text-white transition-colors text-sm font-medium gap-2">
+              <ArrowRight size={14} className="rotate-180" /> Return to Website
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const recentOrders = [
     { id: "ORD-001", customer: "John Doe", total: 45.97, status: "completed", time: "10 mins ago" },
@@ -62,8 +159,12 @@ export default function AdminDashboard() {
         </nav>
         
         <div className="p-4 border-t border-dark-border">
-          <Link href="/" className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition-colors">
+          <button onClick={() => setIsLoggedIn(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition-colors">
             <LogOut size={20} />
+            <span className="font-medium">Sign Out</span>
+          </button>
+          <Link href="/" className="mt-2 flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition-colors">
+            <ArrowRight size={20} className="rotate-180" />
             <span className="font-medium">Return to Site</span>
           </Link>
         </div>
